@@ -10,7 +10,50 @@ https://leetcode.com/problems/linked-list-cycle-ii/
  */
 class Solution {
 public:
-    ListNode *detectCycle(ListNode *head) {        
+    ListNode *detectCycle(ListNode *head) { //using Floyd’s loop detection algorithm
+        
+        ListNode * slow = head;
+        ListNode * fast = head;
+        
+       if (head == NULL || head->next == NULL)
+       {
+           return NULL;
+       }
+        else
+       {
+       
+            while(fast && fast->next)
+            {
+                slow = slow->next;
+                fast = fast->next->next;
+                if(slow==fast)
+                {
+                    break;
+                }
+            }
+            
+            if(slow!=fast)
+            {
+                return NULL;
+            }
+            
+            slow = head;
+            while(slow && fast)
+            {
+                if(slow==fast)
+                {
+                    break;
+                }
+                slow = slow->next;
+                fast = fast->next;
+            }
+
+        }
+     
+       
+       return slow;
+
+        /*        
         set<ListNode *> s;
         ListNode * temp = head;
         while(temp != NULL)
@@ -29,6 +72,7 @@ public:
         }
         
        return NULL;
+       */
         
     }
 };
