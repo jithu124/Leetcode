@@ -39,3 +39,41 @@ public:
         
     }
 };
+
+/*
+class Solution {
+public:
+    vector<int> singleNumber(vector<int>& nums) {
+        vector<int> res(2,0);
+        int AxorB = 0;
+        int firstonepos = 0;
+        
+        for(int x : nums)
+        {
+            AxorB ^= x;
+        }
+        
+        for(int i = 0; i < 32; i++)
+        {
+            if(((AxorB >> i) & 1) ==1)
+            {
+                firstonepos = i;
+            }
+        }
+        
+        for(int x : nums)
+        {
+            if((( x >> firstonepos)&1) == 1)
+            {
+                res[0] ^= x;
+            }
+        }
+        
+        res[1] = res[0]^AxorB;
+            
+        
+        return res;
+        
+    }
+};
+*/
